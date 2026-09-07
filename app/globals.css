@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-body: "Inter", sans-serif;
+
+  /* Dark theme (default) — deep space navy */
+  --color-bg: 11 16 32;
+  --color-surface: 18 26 51;
+  --color-surface2: 24 34 72;
+  --color-line: 38 48 90;
+  --color-ink: 231 233 245;
+  --color-ink-muted: 136 144 181;
+  --color-ink-dim: 92 99 144;
+  --color-amber: 255 180 84;
+  --color-amber-dim: 184 130 60;
+  --color-teal: 94 234 212;
+}
+
+html.light {
+  /* Light theme — quiet daylight workspace */
+  --color-bg: 246 247 251;
+  --color-surface: 255 255 255;
+  --color-surface2: 237 240 247;
+  --color-line: 220 224 236;
+  --color-ink: 17 21 41;
+  --color-ink-muted: 90 98 130;
+  --color-ink-dim: 132 139 166;
+  --color-amber: 184 99 22;
+  --color-amber-dim: 214 150 80;
+  --color-teal: 13 129 118;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-ink));
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background: rgb(var(--color-amber));
+  color: rgb(var(--color-bg));
+}
+
+*:focus-visible {
+  outline: 2px solid #ffb454;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.section-heading {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: #8890b5;
+}
+
+.prose-body p + p {
+  margin-top: 0.85rem;
+}
+
+/* elements this browser hasn't scrolled to yet start hidden;
+   Reveal flips them to their animate-fade-up state via JS */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(18px);
+}
